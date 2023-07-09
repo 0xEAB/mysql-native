@@ -43,6 +43,7 @@ Params:
 	sql = The SQL statement to prepare.
 +/
 SafePrepared prepare(Connection conn, const(char[]) sql)
+	in(conn !is null)
 {
 	auto info = conn.registerIfNeeded(sql);
 	return SafePrepared(sql, info.headers, info.numParams);
